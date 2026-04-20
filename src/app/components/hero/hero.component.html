@@ -1,0 +1,65 @@
+<section class="hero" id="platform">
+  <!-- Animated particle canvas -->
+  <canvas #heroCanvas class="hero__canvas" aria-hidden="true"></canvas>
+
+  <!-- Radial glow blobs -->
+  <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+
+    <!-- Badge -->
+    <div class="hero__badge animate-delay-1">
+      <span class="badge__dot"></span>
+      <span>#1 Media Marketplace for Advertisers &amp; Agencies</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="hero__headline animate-delay-2">
+      <span class="headline-top">Bigger Impact,</span>
+      <span class="headline-main gradient-text">Stronger Campaigns</span>
+    </h1>
+
+    <!-- Sub -->
+    <p class="hero__sub animate-delay-3">
+      We simplify media buying with smarter strategies,<br class="hide-mobile">
+      seamless execution, and measurable impact.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="hero__cta animate-delay-4">
+      <button class="btn-hero-primary" (click)="scrollToSection('features')">
+        Start your journey
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-hero-ghost" (click)="scrollToSection('about')">
+        Learn More
+      </button>
+    </div>
+
+    <!-- Floating stat cards -->
+    <div class="hero__stats animate-delay-5" aria-label="Key metrics">
+      <div class="stat-card stat-card--1">
+        <span class="stat-card__num">110<span class="stat-card__plus">+</span></span>
+        <span class="stat-card__label">Top Agencies</span>
+      </div>
+      <div class="stat-card stat-card--2">
+        <span class="stat-card__num">1M<span class="stat-card__plus">+</span></span>
+        <span class="stat-card__label">Advertisers</span>
+      </div>
+      <div class="stat-card stat-card--3">
+        <span class="stat-card__num">98.99<span class="stat-card__pct">%</span></span>
+        <span class="stat-card__label">Success Rate</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>

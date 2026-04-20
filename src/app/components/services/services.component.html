@@ -1,0 +1,73 @@
+<section class="services" id="features" [class.is-visible]="visible()">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="services__header">
+      <span class="section-label">Our Services</span>
+      <h2 class="services__title">
+        Solutions Built for<br>
+        <span class="gradient-text">Every Stakeholder</span>
+      </h2>
+      <p class="services__subtitle">
+        Whether you're a brand, an agency, or a media owner — we have the tools
+        to accelerate your growth.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="services__grid">
+      @for (service of services; track service.id; let i = $index) {
+        <article
+          class="service-card"
+          [class.is-active]="activeCard() === service.id"
+          [style.--delay]="(i * 0.12) + 's'"
+          [attr.aria-label]="service.title"
+          (mouseenter)="setActive(service.id)"
+          (mouseleave)="setActive(null)"
+          (focusin)="setActive(service.id)"
+          (focusout)="setActive(null)">
+
+          <!-- Glow accent -->
+          <div
+            class="service-card__glow"
+            [style.background]="'radial-gradient(circle, ' + service.accent + '22 0%, transparent 70%)'">
+          </div>
+
+          <!-- Top row -->
+          <div class="service-card__top">
+            <span class="service-card__tag">{{ service.tag }}</span>
+            <div
+              class="service-card__icon"
+              [style.color]="service.accent"
+              [innerHTML]="service.icon">
+            </div>
+          </div>
+
+          <!-- Content -->
+          <h3 class="service-card__title">{{ service.title }}</h3>
+          <p class="service-card__desc">{{ service.description }}</p>
+
+          <!-- CTA -->
+          <a
+            [href]="service.link"
+            class="service-card__link"
+            [style.color]="service.accent"
+            [attr.aria-label]="'Explore ' + service.title">
+            Explore
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <!-- Arrow button overlay -->
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

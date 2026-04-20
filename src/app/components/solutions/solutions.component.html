@@ -1,0 +1,65 @@
+<section class="solutions" id="features-detail" [class.is-visible]="visible()">
+  <div class="container">
+
+    <div class="solutions__layout">
+
+      <!-- Left: Text column -->
+      <div class="solutions__text">
+        <span class="section-label">Why Media Alacarte?</span>
+        <h2 class="solutions__title">
+          Our All-In-One Solution for
+          <span class="gradient-text">Smarter Media Buying</span>
+        </h2>
+        <p class="solutions__desc">
+          We simplify media buying with data, automation, and
+          collaboration to maximise ROI — for every stakeholder in the ecosystem.
+        </p>
+
+        <ul class="solutions__bullets" role="list">
+          @for (bullet of ['Data-driven insights', 'AI-powered automation', 'Real-time analytics', 'Cross-channel reach']; track bullet) {
+            <li class="bullet-item">
+              <span class="bullet-item__check" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {{ bullet }}
+            </li>
+          }
+        </ul>
+
+        <button class="btn-get-started">
+          Get Started
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Right: Bento grid -->
+      <div class="solutions__grid" role="list">
+        @for (sol of solutions; track sol.id; let i = $index) {
+          <article
+            class="sol-card"
+            role="listitem"
+            [class.sol-card--highlight]="sol.highlight"
+            [style.--delay]="(i * 0.1) + 's'"
+            [attr.aria-label]="sol.title">
+
+            <div class="sol-card__icon" aria-hidden="true" [innerHTML]="sol.icon"></div>
+            <h3 class="sol-card__title">{{ sol.title }}</h3>
+            <p class="sol-card__desc">{{ sol.desc ?? sol.description }}</p>
+
+            <!-- Decorative arrow for highlight card -->
+            @if (sol.highlight) {
+              <div class="sol-card__badge" aria-hidden="true">
+                <span>Featured</span>
+              </div>
+            }
+          </article>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

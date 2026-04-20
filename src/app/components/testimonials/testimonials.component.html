@@ -1,0 +1,108 @@
+<section
+  class="testimonials"
+  id="about"
+  [class.is-visible]="visible()"
+  (mouseenter)="setPaused(true)"
+  (mouseleave)="setPaused(false)">
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="testimonials__header">
+      <span class="section-label">What Our Clients Say</span>
+      <h2 class="testimonials__title">
+        Trusted by Industry
+        <span class="gradient-text">Leaders</span>
+      </h2>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel" role="region" aria-label="Client testimonials" aria-live="polite">
+
+      <!-- Cards track -->
+      <div class="carousel__track">
+        @for (t of testimonials; track t.id; let i = $index) {
+          <article
+            class="testi-card"
+            [class.is-current]="current() === i"
+            [class.is-prev]="prev() === i"
+            [class.is-next]="next() === i"
+            [attr.aria-hidden]="current() !== i"
+            [attr.tabindex]="current() === i ? 0 : -1">
+
+            <!-- Quote icon -->
+            <div class="testi-card__quote-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 30" fill="none">
+                <path d="M0 18 C0 6 6 0 18 0 V6 C12 6 9 9 9 15 H18 V30 H0 V18Z" fill="currentColor" opacity="0.2"/>
+                <path d="M22 18 C22 6 28 0 40 0 V6 C34 6 31 9 31 15 H40 V30 H22 V18Z" fill="currentColor" opacity="0.2"/>
+              </svg>
+            </div>
+
+            <!-- Stars -->
+            <div class="testi-card__stars" [attr.aria-label]="t.rating + ' out of 5 stars'">
+              @for (s of stars(t.rating); track s) {
+                <svg class="star" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 1l1.8 3.8 4.2.6-3 3 .7 4.1L8 10.5l-3.7 2-.3-.1.7-4-3-3 4.2-.6L8 1z"/>
+                </svg>
+              }
+            </div>
+
+            <!-- Quote text -->
+            <blockquote class="testi-card__text">
+              "{{ t.quote }}"
+            </blockquote>
+
+            <!-- Author -->
+            <footer class="testi-card__author">
+              <div class="author-avatar" aria-hidden="true">{{ t.avatar }}</div>
+              <div class="author-info">
+                <span class="author-name">{{ t.name }}</span>
+                <span class="author-role">{{ t.role }}, {{ t.company }}</span>
+              </div>
+            </footer>
+
+          </article>
+        }
+      </div>
+
+      <!-- Navigation -->
+      <div class="carousel__nav" role="group" aria-label="Testimonial navigation">
+
+        <!-- Prev / Next arrows -->
+        <button
+          class="carousel__arrow carousel__arrow--prev"
+          (click)="goPrev()"
+          aria-label="Previous testimonial">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Dot indicators -->
+        <div class="carousel__dots" role="tablist" aria-label="Select testimonial">
+          @for (t of testimonials; track t.id; let i = $index) {
+            <button
+              class="dot"
+              role="tab"
+              [class.is-active]="current() === i"
+              [attr.aria-selected]="current() === i"
+              [attr.aria-label]="'Testimonial ' + (i + 1)"
+              (click)="goTo(i)">
+            </button>
+          }
+        </div>
+
+        <button
+          class="carousel__arrow carousel__arrow--next"
+          (click)="goNext()"
+          aria-label="Next testimonial">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>

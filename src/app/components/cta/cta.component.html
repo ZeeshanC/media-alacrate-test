@@ -1,0 +1,101 @@
+<section class="cta-section" id="demo" [class.is-visible]="visible()">
+
+  <!-- Background decoration -->
+  <div class="cta-section__bg" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--left"></div>
+    <div class="bg-glow bg-glow--right"></div>
+  </div>
+
+  <div class="container">
+    <div class="cta-section__card">
+
+      <!-- Left content -->
+      <div class="cta-section__content">
+        <span class="section-label">Supercharge Your Media Strategy</span>
+        <h2 class="cta-section__title">
+          100% Efficiency,<br>
+          <span class="gradient-text">Zero Compromise</span>
+        </h2>
+        <p class="cta-section__desc">
+          Join 110+ agencies and a million advertisers who are already
+          scaling smarter with Media Alacarte.
+        </p>
+
+        <!-- Feature list -->
+        <ul class="cta-features" role="list">
+          @for (feature of features; track feature) {
+            <li class="cta-features__item">
+              <span class="cta-features__icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l2.5 2.5L10 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {{ feature }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Right: form or success -->
+      <div class="cta-section__form-wrap">
+        @if (!submitted()) {
+          <div class="cta-form">
+            <h3 class="cta-form__title">Request a Demo</h3>
+            <p class="cta-form__sub">Get a personalised walkthrough in under 24 hours.</p>
+
+            <div class="cta-form__field">
+              <label for="cta-email" class="cta-form__label">Work Email</label>
+              <input
+                id="cta-email"
+                type="email"
+                class="cta-form__input"
+                [class.has-error]="emailError()"
+                placeholder="you@company.com"
+                [value]="email()"
+                (input)="onEmailInput($event)"
+                autocomplete="email"
+                aria-required="true"
+                [attr.aria-describedby]="emailError() ? 'email-error' : null">
+              @if (emailError()) {
+                <span id="email-error" class="cta-form__error" role="alert">
+                  {{ emailError() }}
+                </span>
+              }
+            </div>
+
+            <button class="btn-demo" (click)="requestDemo()" type="button">
+              Optimize Your Media Today
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <p class="cta-form__note">No credit card required. Free 14-day trial.</p>
+          </div>
+        } @else {
+          <div class="cta-success" role="alert" aria-live="polite">
+            <div class="cta-success__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="22" stroke="url(#successGrad)" stroke-width="2"/>
+                <path d="M14 24l7 7 13-14" stroke="url(#successGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="successGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#ff2d5e"/>
+                    <stop offset="100%" stop-color="#ff6b35"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <h3 class="cta-success__title">You're on the list!</h3>
+            <p class="cta-success__text">
+              We'll be in touch within 24 hours to schedule your personalised demo.
+            </p>
+            <button class="btn-reset" (click)="resetForm()">Submit another</button>
+          </div>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>
