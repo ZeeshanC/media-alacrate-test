@@ -53,28 +53,29 @@
     </button>
   </div>
 
-  <!-- Mobile Drawer -->
-  <div class="navbar__drawer" [class.is-open]="menuOpen()" role="dialog" aria-label="Navigation menu">
-    <ul class="navbar__drawer-links" role="list">
-      @for (link of navLinks; track link.href) {
-        <li>
-          <a
-            [href]="link.href"
-            class="drawer__link"
-            (click)="scrollTo(link.href, $event)">
-            {{ link.label }}
-          </a>
-        </li>
-      }
-    </ul>
-    <div class="drawer__actions">
-      <button class="btn-ghost btn--full">Login</button>
-      <button class="btn-primary btn--full">Get Started</button>
-    </div>
-  </div>
-
-  <!-- Overlay -->
-  @if (menuOpen()) {
-    <div class="navbar__overlay" (click)="closeMenu()" aria-hidden="true"></div>
-  }
 </nav>
+
+<!-- Mobile Drawer -->
+<div class="navbar__drawer" [class.is-open]="menuOpen()" role="dialog" aria-label="Navigation menu">
+  <ul class="navbar__drawer-links" role="list">
+    @for (link of navLinks; track link.href) {
+      <li>
+        <a
+          [href]="link.href"
+          class="drawer__link"
+          (click)="scrollTo(link.href, $event)">
+          {{ link.label }}
+        </a>
+      </li>
+    }
+  </ul>
+  <div class="drawer__actions">
+    <button class="btn-ghost btn--full">Login</button>
+    <button class="btn-primary btn--full">Get Started</button>
+  </div>
+</div>
+
+<!-- Overlay -->
+@if (menuOpen()) {
+  <div class="navbar__overlay" (click)="closeMenu()" aria-hidden="true"></div>
+}

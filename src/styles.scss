@@ -53,6 +53,12 @@
   --shadow-glow:       0 0 40px rgba(255, 45, 94, 0.2);
   --shadow-card:       0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-elevated:   0 20px 60px rgba(0, 0, 0, 0.5);
+
+  /* Breakpoints */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
 }
 
 /* ---- Reset & Base ---- */
@@ -62,9 +68,9 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -72,7 +78,6 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -108,7 +113,24 @@ button {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-pad);
+
+  /* Ensure padding doesn't cause overflow on mobile */
+  @media (max-width: 640px) {
+    --container-pad: 1.25rem;
+  }
 }
+
+/* --- Visibility Utilities --- */
+.hide-mobile {
+  @media (max-width: 767px) { display: none !important; }
+}
+
+.show-mobile {
+  @media (min-width: 768px) { display: none !important; }
+}
+
+.text-balance { text-wrap: balance; }
+
 
 .gradient-text {
   background: var(--gradient-primary);

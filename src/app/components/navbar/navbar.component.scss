@@ -7,8 +7,9 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 10000; // Correctly set level
   padding: 1.25rem 0;
+  /* overflow: hidden; removed to allow drawer to show */
   transition: background var(--transition-med), padding var(--transition-med),
               backdrop-filter var(--transition-med);
 
@@ -23,7 +24,13 @@
   &__inner {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 2rem;
+    padding: 0 var(--container-pad); // Force container pad to be consistent
+
+    @media (max-width: 1024px) {
+      gap: 1rem;
+    }
   }
 
   /* --- Logo --- */
@@ -127,22 +134,28 @@
 
   /* --- Drawer --- */
   &__drawer {
-    display: none;
-    position: fixed;
+    display: block;
+    position: fixed; // Fixed relative to viewport
     top: 0;
-    right: 0;
+    right: -100%; // Start far outside to prevent expanding document width
     bottom: 0;
-    width: min(320px, 85vw);
+    width: min(320px, 80vw);
     background: var(--color-surface);
     border-left: 1px solid var(--color-border);
-    padding: 5rem 2rem 2rem;
-    transform: translateX(100%);
-    transition: transform var(--transition-slow);
-    z-index: 999;
+    padding: 6rem 1.5rem 2rem;
+    transform: none; // Using right instead of transform to avoid composite layers issues in some browsers
+    visibility: hidden;
+    pointer-events: none;
+    transition: right var(--transition-med) cubic-bezier(0.16, 1, 0.3, 1),
+                visibility var(--transition-med);
+    z-index: 10000; // Above everything
     overflow-y: auto;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
 
     &.is-open {
-      transform: translateX(0);
+      right: 0;
+      visibility: visible;
+      pointer-events: auto;
     }
   }
 
@@ -159,7 +172,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 998;
+    z-index: 9998; // Just below drawer
     backdrop-filter: blur(4px);
   }
 }
@@ -245,8 +258,11 @@
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 0;
+  }
   .navbar__links { display: none; }
   .navbar__actions { display: none; }
   .navbar__hamburger { display: flex; }
-  .navbar__drawer { display: block; }
 }
+

@@ -1,0 +1,30 @@
+
+> media-alacarte@0.0.0 build
+> ng build --no-progress
+
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mmain-UH4UNHDE.js[39m   [2m | [22m[2mmain[22m         [2m | [22m[36m180.24 kB[39m[2m | [22m               [36m39.39 kB[39m
+[32mchunk-MQHKKHPU.js[39m  [2m | [22m[2m-[22m            [2m | [22m[36m138.21 kB[39m[2m | [22m               [36m41.15 kB[39m
+[32mstyles-OMDY3RFZ.css[39m[2m | [22m[2mstyles[22m       [2m | [22m [36m11.46 kB[39m[2m | [22m                [36m1.69 kB[39m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m329.91 kB[22m[2m | [22m               [1m82.23 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-ACFXEHDQ.js[39m  [2m | [22m[2mbrowser[22m      [2m | [22m [36m67.75 kB[39m[2m | [22m               [36m17.81 kB[39m
+
+Application bundle generation complete. [5.319 seconds] - 2026-04-20T17:10:57.203Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/components/cta/cta.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 572 bytes with a total of 4.57 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/components/footer/footer.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 882 bytes with a total of 4.88 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/components/hero/hero.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 1.61 kB with a total of 5.61 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/components/navbar/navbar.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 444 bytes with a total of 4.44 kB.[0m
+
+[39m[22m
+Output location: C:\projects\media-alacarte\dist\media-alacarte
+

@@ -65,6 +65,11 @@
     justify-content: center;
     gap: 1.5rem;
     margin-top: 2.5rem;
+
+    @media (max-width: 480px) {
+      gap: 1rem;
+      margin-top: 2rem;
+    }
   }
 
   &__arrow {
@@ -140,6 +145,11 @@
   pointer-events: none;
   overflow: hidden;
 
+  @media (max-width: 640px) {
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
+
   /* Faint grid texture */
   &::before {
     content: '';
@@ -201,6 +211,11 @@
     position: relative;
     z-index: 1;
     quotes: none;
+
+    @media (max-width: 480px) {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
   }
 
   &__author {
