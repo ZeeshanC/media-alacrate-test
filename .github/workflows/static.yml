@@ -44,7 +44,7 @@ jobs:
         with:
           # This is the standard output path for modern Angular apps.
           # If your build fails here, check if the folder structure in /dist is different.
-          path: './dist/media-alacrate'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
